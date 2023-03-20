@@ -1,0 +1,6 @@
+# Criar Stream.
+CREATE STREAM f_test_stream (message VARCHAR) WITH (kafka_topic='test', value_format='json');
+
+# Criar o Stream que consome de outro Stream.
+CREATE STREAM test_consumer_all_stream WITH (KAFKA_TOPIC='test1', value_format='json') AS SELECT * FROM f_test_stream;
+
